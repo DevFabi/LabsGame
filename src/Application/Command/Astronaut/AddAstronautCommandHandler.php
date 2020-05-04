@@ -28,6 +28,7 @@ class AddAstronautCommandHandler
         $this->apiTokenRepository->add($apiToken);
 
         $astronaut->setApiTokens([$apiToken]);
+        $astronaut->setRoles(['ROLE_USER']);
         $this->astronautRepository->add($astronaut);
 
         return $astronaut;

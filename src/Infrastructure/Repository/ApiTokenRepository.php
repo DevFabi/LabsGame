@@ -4,11 +4,10 @@
 namespace App\Infrastructure\Repository;
 
 use App\Domain\Model\ApiToken;
-use App\Domain\Model\Fight;
+use App\Domain\Repository\ApiTokenRepositoryInterface;
 use App\Infrastructure\QueryBuilder\ApiTokenQueryBuilder;
-use Doctrine\ORM\EntityRepository;
 
-class ApiTokenRepository extends AbstractDoctrineRepository
+class ApiTokenRepository extends AbstractDoctrineRepository implements ApiTokenRepositoryInterface
 {
     /**
      * @return ApiTokenQueryBuilder()
@@ -32,9 +31,9 @@ class ApiTokenRepository extends AbstractDoctrineRepository
     /**
      * {@inheritdoc}
      */
-    public function add(Fight $fight)
+    public function add(ApiToken $apiToken)
     {
-        $this->entityManager->persist($fight);
+        $this->entityManager->persist($apiToken);
     }
     /**
      * {@inheritdoc}

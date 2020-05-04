@@ -6,7 +6,7 @@ namespace App\Domain\Model;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Infrastructure\Repository\ApiTokenRepository")
+ * @ORM\Entity
  */
 
 class ApiToken
