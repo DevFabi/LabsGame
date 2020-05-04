@@ -1,0 +1,29 @@
+services:
+    app.application.command.planet.add_planet_command_handler:
+        class: App\Application\Command\Planet\AddPlanetCommandHandler
+        arguments:
+            - '@app.infrastructure.repository.planet_repository'
+        tags:
+            - { name: tactician.handler, command: App\Application\Command\Planet\AddPlanetCommand }
+    app.application.command.fight.ask_for_fight_command_handler:
+        class: App\Application\Command\Fight\AskForFightCommandHandler
+        arguments:
+            - '@app.infrastructure.repository.fight_repository'
+            - '@app.infrastructure.repository.planet_repository'
+        tags:
+            - { name: tactician.handler, command: App\Application\Command\Fight\AskForFightCommand }
+    app.application.command.score.write_score_fight_command_handler:
+        class: App\Application\Command\Score\WriteScoreFightCommandHandler
+        arguments:
+            - '@app.infrastructure.repository.score_repository'
+            - '@app.infrastructure.repository.planet_repository'
+            - '@app.infrastructure.repository.fight_repository'
+        tags:
+            - { name: tactician.handler, command: App\Application\Command\Score\WriteScoreFightCommand }
+    app.application.command.astronaut.add_astronaut_command_handler:
+        class: App\Application\Command\Astronaut\AddAstronautCommandHandler
+        arguments:
+            - '@app.infrastructure.repository.astronaut_repository'
+            - '@app.infrastructure.repository.api_token_repository'
+        tags:
+            - { name: tactician.handler, command: App\Application\Command\Astronaut\AddAstronautCommand }

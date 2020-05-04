@@ -1,0 +1,10 @@
+# Library documentation: http://tactician.thephpleague.com/
+# Bundle documentation: https://github.com/thephpleague/tactician-bundle/blob/v1.0/README.md
+tactician:
+    commandbus:
+        default:
+            middleware:
+                # Process commands in a Doctrine transaction (automatic flush, rollback in case of failure)
+                - tactician.middleware.doctrine
+                # Handle command with handlers defined in services
+                - tactician.middleware.command_handler

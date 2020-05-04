@@ -1,0 +1,21 @@
+services:
+    app.infrastructure.repository.planet_repository:
+        class: App\Infrastructure\Repository\PlanetRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'
+    app.infrastructure.repository.fight_repository:
+        class: App\Infrastructure\Repository\FightRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'
+    app.infrastructure.repository.score_repository:
+        class: App\Infrastructure\Repository\ScoreRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'
+    app.infrastructure.repository.astronaut_repository:
+        class: App\Infrastructure\Repository\AstronautRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'
+    app.infrastructure.repository.api_token_repository:
+        class: App\Infrastructure\Repository\ApiTokenRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'

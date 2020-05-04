@@ -1,0 +1,16 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+planets:
+    type:      rest
+    resource : App\UI\Controller\PlanetController
+fights:
+    type:      rest
+    resource : App\UI\Controller\FightController
+scores:
+    type:      rest
+    resource : App\UI\Controller\ScoreController
+astronauts:
+    type:      rest
+    resource : App\UI\Controller\AstronautController
+

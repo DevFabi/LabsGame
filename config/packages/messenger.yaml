@@ -1,0 +1,23 @@
+framework:
+    messenger:
+        failure_transport: failed
+
+        transports:
+            async: 
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    exchange:
+                        name: app
+                        type: direct
+                    queues:
+                        fight:
+                            binding_keys:
+                                - fight
+                        score:
+                            binding_keys:
+                                - score
+            failed: 'doctrine://default?queue_name=failed'
+
+        routing:
+             'App\Application\Command\Fight\AskForFightCommand': async
+             'App\Application\Command\Score\WriteScoreFightCommand': async

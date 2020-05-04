@@ -1,0 +1,14 @@
+services:
+  app.application.query.planet.planet_list_query_handler:
+    class: App\Application\Query\Planet\PlanetListQueryHandler
+    arguments:
+      - '@app.infrastructure.repository.planet_repository'
+    tags:
+      - { name: tactician.handler, command: App\Application\Query\Planet\PlanetListQuery }
+
+  app.application.query.fight.fight_list_query_handler:
+    class: App\Application\Query\Fight\FightListQueryHandler
+    arguments:
+      - '@app.infrastructure.repository.fight_repository'
+    tags:
+      - { name: tactician.handler, command: App\Application\Query\Fight\FightListQuery }
