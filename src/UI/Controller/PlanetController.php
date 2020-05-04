@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use League\Tactician\CommandBus;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +31,9 @@ class PlanetController extends AbstractFOSRestController implements ClassResourc
         $this->commandBus = $commandBus;
     }
 
+    /**
+     * @IsGranted("ROLE_ADMIN")
+     */
     public function postAction(Request $request)
     {
         $command = new AddPlanetCommand();

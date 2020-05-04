@@ -25,8 +25,7 @@ class AstronautAuthenticator extends AbstractGuardAuthenticator
 
     public function supports(Request $request)
     {
-        return $request->headers->has('Authorization')
-            && 0 === strpos($request->headers->get('Authorization'), 'Bearer ');
+        return $request->headers->has('Authorization');
     }
 
     public function getCredentials(Request $request)
@@ -34,7 +33,8 @@ class AstronautAuthenticator extends AbstractGuardAuthenticator
         $authorizationHeader = $request->headers->get('Authorization');
 
         // skip beyond "Bearer "
-        return substr($authorizationHeader, 7);
+//        return substr($authorizationHeader, 7);
+        return $authorizationHeader;
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)

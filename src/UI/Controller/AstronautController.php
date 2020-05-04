@@ -35,6 +35,7 @@ class AstronautController extends AbstractFOSRestController implements ClassReso
         $this->bus = $bus;
     }
 
+
     public function postAction(Request $request)
     {
         $command = new AddAstronautCommand();
