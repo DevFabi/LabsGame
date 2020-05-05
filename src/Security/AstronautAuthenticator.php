@@ -31,7 +31,6 @@ class AstronautAuthenticator extends AbstractGuardAuthenticator
     public function getCredentials(Request $request)
     {
         $authorizationHeader = $request->headers->get('Authorization');
-
         // skip beyond "Bearer "
 //        return substr($authorizationHeader, 7);
         return $authorizationHeader;

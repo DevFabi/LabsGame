@@ -49,7 +49,6 @@ class Astronaut implements UserInterface
         $this->password = $password;
     }
 
-
     public function getId(): ?int
     {
         return $this->id;
