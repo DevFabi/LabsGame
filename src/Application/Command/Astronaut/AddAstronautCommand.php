@@ -4,23 +4,26 @@
 namespace App\Application\Command\Astronaut;
 
 
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 class AddAstronautCommand
 {
     public $username;
     public $password;
+    public $userPasswordEncoder;
     public $apiToken;
 
     /**
      * AddAstronautCommand constructor.
-     * @param $username
-     * @param $password
-     * @param $apiToken
+     * @param null $username
+     * @param null $password
+     * @param UserPasswordEncoderInterface $userPasswordEncoder
      */
-    public function __construct($username = null, $password = null, $apiToken = null)
+    public function __construct($username, $password, UserPasswordEncoderInterface $userPasswordEncoder)
     {
         $this->username = $username;
         $this->password = $password;
-        $this->apiToken = $apiToken;
+        $this->userPasswordEncoder = $userPasswordEncoder;
     }
 
     /**

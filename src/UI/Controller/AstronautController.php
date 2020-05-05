@@ -13,6 +13,7 @@ use League\Tactician\CommandBus;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Rest\RouteResource(
@@ -25,19 +26,23 @@ class AstronautController extends AbstractFOSRestController implements ClassReso
 {
     private $commandBus;
     private $bus;
+    private $userPasswordEncoder;
 
     public function __construct(
         CommandBus $commandBus,
-        MessageBusInterface $bus
+        MessageBusInterface $bus,
+    UserPasswordEncoderInterface $userPasswordEncoder
     )
     {
         $this->commandBus = $commandBus;
         $this->bus = $bus;
+        $this->userPasswordEncoder = $userPasswordEncoder;
     }
+
 
     public function postAction(Request $request)
     {
-        $command = new AddAstronautCommand();
+        $command = new AddAstronautCommand(null, null, $this->userPasswordEncoder);
 
         $form = $this->createForm(AddAstronautType::class, $command);
         $form->submit($request->request->all());

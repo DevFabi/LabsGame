@@ -11,9 +11,9 @@ security:
                 class: App\Domain\Model\Astronaut
                 property: username
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+#        dev:
+#            pattern: ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
         main:
             anonymous: lazy
             provider: app_user_provider
